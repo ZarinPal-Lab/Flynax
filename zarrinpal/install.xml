@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin name="zarrinpal">
+	<title>zarrinpal</title>
+	<description>zarrinpal payment gateway</description>
+	<author>Rasoul Ketabi</author>
+	<owner>Flynax Classifieds Software</owner>
+	<version>1.0.0</version>
+	<date>10.07.2015</date>
+	<notice></notice>
+
+	<files>
+		<file>controllers/pre.gateway.php</file>
+		<file>controllers/pre2.gateway.php</file>
+		<file>controllers/post.gateway.php</file>
+		<file>gateway.tpl</file>
+	</files>
+
+	<hooks>
+		<hook name="paymentGateway">
+			<![CDATA[
+				if ( $GLOBALS['config']['zarrinpal_module'] )   
+				{
+                	$GLOBALS['rlSmarty'] -> display( RL_ROOT . 'plugins' . RL_DS . 'zarrinpal' . RL_DS . 'gateway.tpl' );
+				}
+			]]>
+		</hook>
+	</hooks>
+
+	<phrases>
+		<phrase key="zarrinpal_payment" module="common"><![CDATA[zarrinpal payment gateway]]></phrase>
+	<phrases>
+
+	<config key="zarrinpal_divider" name="درگاه پرداخت زرین پال" description="" values="" type="divider" group="6"><![CDATA[]]></config>
+	<config key="zarrinpal_module" name="فعال بودن درگاه" description="" values="" type="bool" validate="" group="6"><![CDATA[1]]></config>
+	<config key="zarrinpal_merchant" name="کد مرچنت" description="" values="" type="text" validate="" group="6"><![CDATA[]]></config>
+</plugin>
